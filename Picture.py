@@ -4,11 +4,7 @@ import jetson_utils
 import argparse
 
 
-
-    opt.network,
-    model="resnet18.onnx",
-    input_blob="input_0",
-    output_blob="output_0",parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser()
 
 parser.add_argument("filename", type=str, help="filename of the image to process")
 
@@ -19,6 +15,10 @@ opt = parser.parse_args()
 img = jetson_utils.loadImage(opt.filename)
 
 net = jetson_inference.imageNet(
+    opt.network,
+    model="resnet18.onnx",
+    input_blob="input_0",
+    output_blob="output_0",
     labels="dataset/labels.txt",
 )
 
